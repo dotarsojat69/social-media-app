@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import App from './App'
 
-import Home from './_root/pages/Home'
+import Home from './_root/pages/landing-page/index'
 
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
