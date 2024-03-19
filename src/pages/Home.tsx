@@ -1,12 +1,7 @@
-import Topbar from "@/components/Topbar"
-
-
-
-
 const Home = () => {
     return (
       <section>
-       <Topbar />    
+           
       <div className='flex flex-1'>
         <div className='home-container'>
           <div className='home-posts'>
