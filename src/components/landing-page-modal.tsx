@@ -10,12 +10,14 @@ const Modal = ({ children, show, onClose }: Props) => {
   const modalRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+ 
     const handleClickOutside = (event: MouseEvent) => {
       if (
         modalRef.current &&
         !modalRef.current.contains(event.target as Node)
       ) {
         onClose();
+        console.log("Clicked outside the modal");
       }
     };
 
