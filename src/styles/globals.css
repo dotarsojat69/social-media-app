@@ -96,7 +96,7 @@
   }
 
   .custom-scrollbar::-webkit-scrollbar-track {
-    background: #09090a;
+    background: #FFFFFF;
   }
 
   .custom-scrollbar::-webkit-scrollbar-thumb {
@@ -140,7 +140,7 @@
   }
 
   .home-posts {
-    @apply max-w-screen-sm flex flex-col items-center w-full gap-6 md:gap-9;
+    @apply max-w-screen-md flex flex-col items-center w-full gap-6 md:gap-6;
   }
 
   .home-creators {
@@ -228,7 +228,7 @@
 
   /* Post Card */
   .post-card {
-    @apply bg-dark-2 rounded-3xl border border-dark-4 p-5 lg:p-7 w-full max-w-screen-sm;
+    @apply bg-dark-2 rounded-3xl border p-5 lg:p-7 w-full max-w-screen-sm;
   }
 
   .post-card_img {
