@@ -7,15 +7,16 @@ import { Button } from "./ui/button"
 
 const Topbar = () => {
   return (
-    <section className="top-bar">
+    <section className="topbar">
         <div className="flex-between py-4 px-5">
-            <Link to= "/" className="flex gap-3 items-center text-bold">
+            <Link to= "/" className="flex gap-3 items-center text-bold text-black">
                 Logo
             </Link>
 
             <div className="flex gap-4">
-                <Button>
-
+                <Button variant="ghost" className="shad-button_ghost"
+                >
+                    <img src="/assets/icons/logout.svg" alt="logout" />
                 </Button>
             </div>
         </div>
