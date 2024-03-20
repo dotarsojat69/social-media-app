@@ -4,12 +4,7 @@ import Modal from "@/components/landing-page-modal";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardContent,
-} from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
 const Index = () => {
   const [showModal, setShowModal] = useState(false);
@@ -42,7 +37,7 @@ const Index = () => {
           </Button>
         </div>
       </div>
-      <Modal show={showModal}>
+      <Modal show={showModal} onClose={() => setShowModal(false)}>
         <Card className="w-3/12 bg-stone-100 border-2 border-black/25">
           <CardHeader>
             <CardTitle className="uppercase">Sign In</CardTitle>
@@ -70,7 +65,6 @@ const Index = () => {
                 </Button>
               </div>
             </form>
-            <Button onClick={() => setShowModal(false)}>Close Modal</Button>
           </CardContent>
         </Card>
       </Modal>
