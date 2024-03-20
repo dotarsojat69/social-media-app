@@ -44,7 +44,9 @@ const PostCard = () => {
             className="post-card_img"/>
         </Link>
         <Link to="/comment/" className="flex justify-end">
-            <img src="/assets/icons/comment.svg" alt="" />
+            <img src="/assets/icons/comment.svg" alt="comment"
+            width={20}
+            height={20} />
         </Link>
       </div>
   )

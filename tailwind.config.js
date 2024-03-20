@@ -34,9 +34,7 @@ module.exports = {
         'light-3': '#7878A3',
         'light-4': '#5C5C7B',
       },
-      backgroundImage: {
-        'hero-pattern': "url('/assets/pattern.svg')",
-      },
+      
       screens: {
         'xs': '480px',
       

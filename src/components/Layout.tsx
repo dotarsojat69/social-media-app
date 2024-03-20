@@ -6,7 +6,7 @@ import { Outlet } from 'react-router-dom'
 
 const Layout = () => {
   return (
-    <div className="w-full md:flex bg-[url(/images/pattern.svg)]">
+    <div className="w-full md:flex bg-[url(/assets/images/pattern.svg)]">
       
       <Topbar />
       <Sidebar />
