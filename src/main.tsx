@@ -1,18 +1,12 @@
-import React from 'react'
+import { BrowserRouter } from "react-router-dom";
 import ReactDOM from 'react-dom/client'
+import App from "@/routes/index"
 
-import Home from './pages/Home'
-import "./global.css";
+import "./styles/globals.css"
 
-
-
-
-
-ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    
-    
-    <Home />
-    
-  </React.StrictMode>,
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+  
 )
