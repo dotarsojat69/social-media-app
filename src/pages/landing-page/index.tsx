@@ -60,8 +60,9 @@ const Index = () => {
                   className=" text-blue-900 hover:text-white hover:no-underline hover:bg-rose  h-5 py-0 px-2"
                   variant="link"
                   onClick={() => setShowModal(true)}
+                  asChild
                 >
-                  Sign Up
+                  <Link to="/landing-page/register">Sign Up</Link>
                 </Button>
               </div>
             </form>
