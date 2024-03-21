@@ -20,23 +20,38 @@ module.exports = {
     },
     extend: {
       colors: {
+<<<<<<< HEAD
         'primary-500': '#877EFF',
         'primary-600': '#5D5FEF',
         'secondary-500': '#FFB620',
+=======
+        'primary-500': '#D9D9D9',
+        'primary-600': '#8D8888',
+        'secondary-500': '#FFFFFF',
+>>>>>>> origin/dev
         'off-white': '#D0DFFF',
         'red': '#FF5A5A',
         'dark-1': '#E7E4E4',
         'dark-2': '#D9D9D9',
+<<<<<<< HEAD
         'dark-3': '#101012',
         'dark-4': '#1F1F22',
+=======
+        'dark-3': '#E7E4E4',
+        'dark-4': '#8D8888',
+>>>>>>> origin/dev
         'light-1': '#FFFFFF',
         'light-2': '#EFEFEF',
         'light-3': '#7878A3',
         'light-4': '#5C5C7B',
       },
+<<<<<<< HEAD
       backgroundImage: {
         'hero-pattern': "url('/assets/pattern.svg')",
       },
+=======
+      
+>>>>>>> origin/dev
       screens: {
         'xs': '480px',
       
