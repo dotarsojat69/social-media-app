@@ -10,6 +10,7 @@ import DetailPost from '@/pages/DetailPost';
 
 
 const router = createBrowserRouter([
+  
   {
     path: "/",
     element: <Index />,
