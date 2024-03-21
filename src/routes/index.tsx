@@ -1,35 +1,53 @@
-import { Route, Routes } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import Layout from "@/components/Layout";
-import Home from "@/pages/Home";
-import DetailPost from "@/pages/DetailPost";
-import Login from "@/pages/landing-page/login";
-import Register from "@/pages/landing-page/register";
-import Index from "@/pages/landing-page";
-import CreatePost from "@/pages/CreatePost";
+import Home from '@/pages/Home';
+import Index from '@/pages/landing-page/index';
+import Register from '@/pages/landing-page/register';
+import Login from '@/pages/landing-page/login';
+import CreatePost from '@/pages/CreatePost';
+import Layout from '@/components/Layout';
+import DetailPost from '@/pages/DetailPost';
+
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Index />,
+  },
+  {
+    element: <Layout />,
+    children: [
+      {
+        path: "/home",
+        element: <Home />,
+      },
+      {
+        path: "/landing-page/register",
+        element: <Register />,
+      },
+      {
+        path: "/landing-page/login",
+        element: <Login />,
+      },
+      // {
+      //   path: "/profile",
+      //   element: <Profile />,
+      // },
+      {
+        path: "/create-post",
+        element: <CreatePost />,
+      },
+      {
+        path: "/detail-post",
+        element: <DetailPost />,
+      },
+    ],
+    },
+    ]);
+ 
 
 const App = () => {
-  return (
-    <main className="flex h-screen">
-      <Routes>
-        {/* public */}
-        <Route element={<Index />}>
-        <Route path="/landing-page/login" element={<Login />} />
-        <Route path="/landing-page/register" element={<Register />} />
+  return <RouterProvider router={router} />;
+};
 
-        </Route>
-        {/* private */}
-        <Route element={<Layout />}>
-
-        <Route index element={<Home />}/>
-        <Route path="/create-post/" element={<CreatePost />} />
-        <Route path="/detail-post/" element={<DetailPost />} />
-
-        </Route>
-      </Routes>
-
-    </main>
-  )
-}
-
-export default App
+export default App;

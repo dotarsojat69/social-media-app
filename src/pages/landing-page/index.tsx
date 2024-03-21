@@ -51,7 +51,7 @@ const Index = () => {
                 type="submit"
                 asChild
               >
-                <Link to="/">Sign Up</Link>
+                <Link to="/home">Sign Up</Link>
               </Button>
               <hr className="w-1/2 h-px bg-gray-300 border-0" />
               <div className="flex flex-row text-sm gap-1 justify-center">
@@ -61,7 +61,7 @@ const Index = () => {
                   variant="link"
                   asChild
                 >
-                  <Link to="/landing-page/login">Sign In</Link>
+                  <Link to="/home">Sign In</Link>
                 </Button>
               </div>
             </form>

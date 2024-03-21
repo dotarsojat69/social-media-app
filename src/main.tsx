@@ -1,12 +1,15 @@
-import { BrowserRouter } from "react-router-dom";
+
 import ReactDOM from 'react-dom/client'
-import App from "@/routes/index"
-
 import "@/styles/globals.css"
+// import "@/styles/custom.css";
+import App from './routes';
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <BrowserRouter>
+
+ReactDOM.createRoot(document.getElementById("root")!).render(
+  <>
+    
+    
     <App />
-  </BrowserRouter>
-  
+    
+  </>,
 )

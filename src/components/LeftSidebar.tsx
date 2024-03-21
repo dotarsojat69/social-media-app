@@ -7,13 +7,13 @@ const LeftSidebar = () => {
   const navigate = useNavigate();
  
   const handleLogout = () => {
-    navigate("/landing-page/login");
+    navigate("/");
   };
 
   return (
     <nav className='leftsidebar'>
       <div className="flex flex-col gap-11">
-        <Link to="/" className="flex gap-3 items-center text-bold text-black">
+        <Link to="/home" className="flex gap-3 items-center text-bold text-black">
             Logo
         </Link>
 
@@ -27,7 +27,7 @@ const LeftSidebar = () => {
         </Link>
 
         <ul className='flex flex-col gap-6'>
-          <Link to="/" className='flex gap-6 items-center p-4'>
+          <Link to="/home" className='flex gap-6 items-center p-4'>
             <img src="/assets/icons/home.svg" alt="home" className="hover:red-600" />
             <p className='body-bold text-black'>
               Home
