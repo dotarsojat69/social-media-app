@@ -6,6 +6,7 @@ import Register from '@/pages/landing-page/register';
 import Login from '@/pages/landing-page/login';
 
 const router = createBrowserRouter([
+  
   {
     path: "/",
     element: <Home />,
