@@ -84,7 +84,7 @@ const Index = () => {
                   variant="link"
                   asChild
                 >
-                  <Link to="/home">Sign In</Link>
+                  <Link to="/landing-page/login">Sign In</Link>
                 </Button>
               </div>
             </form>

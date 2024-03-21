@@ -1,10 +1,4 @@
 import { Link } from "react-router-dom"
-import { DropdownMenu,
-        DropdownMenuContent, 
-        DropdownMenuItem,
-        DropdownMenuSeparator, 
-        DropdownMenuTrigger 
-        } from "./ui/dropdown-menu"
 
 const PostCard = () => {
   return (
@@ -30,20 +24,12 @@ const PostCard = () => {
                 </div>
             </div>
 
-            <DropdownMenu>
-    <DropdownMenuTrigger>
+            <Link to="/edit-post/">
                 <img src="/assets/icons/dots.svg"
                 alt="dots"
                 width={20}
                 height={20} />
-            </DropdownMenuTrigger>
-            <DropdownMenuContent>
-            <DropdownMenuItem><Link to="/edit-post">Edit Post</Link>
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>Delete Post</DropdownMenuItem>
-            </DropdownMenuContent>
-    </DropdownMenu>
+            </Link>
         </div>
 
         <Link to="/detail-post/">
