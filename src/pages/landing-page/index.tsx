@@ -1,14 +1,15 @@
-import { Link, Outlet } from "react-router-dom";
-
-import Modal from "@/components/landing-page-modal";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
 import { Input } from "@/components/ui/input";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 const Index = () => {
-  const [showModal, setShowModal] = useState(false);
-
   return (
     <div className="container flex flex-row justify-between items-center p-30 w-full h-screen">
       <div className="flex flex-col gap-3">
@@ -19,57 +20,95 @@ const Index = () => {
       </div>
       <div className="flex flex-col justify-center items-center gap-2">
         <p className="text-xl font-bold">Join Us Now !</p>
-        <Button
-          className="text-sm uppercase bg-blue-950 hover:bg-rose h-7 w-full"
-          asChild
-        >
-          <Link to="/landing-page/register">Create account</Link>
-        </Button>
-        <hr className="w-64 h-px my-2 bg-gray-300 border-0" />
-        <div className="flex flex-row text-sm gap-1">
-          <p className="font-light ">Already have an account?</p>
-          <Button
-            className=" text-blue-900 hover:text-white hover:no-underline hover:bg-rose  h-5 py-0 px-2"
-            variant="link"
-            onClick={() => setShowModal(true)}
-          >
-            Sign In
-          </Button>
-        </div>
-      </div>
-      <Modal show={showModal} onClose={() => setShowModal(false)}>
-        <Card className="w-3/12 bg-stone-100 border-2 border-black/25">
-          <CardHeader>
-            <CardTitle className="uppercase">Sign In</CardTitle>
-          </CardHeader>
-          <CardContent>
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button className="text-sm uppercase bg-blue-950 hover:bg-rose h-7 w-full">
+              Create account
+            </Button>
+          </DialogTrigger>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Sign In</DialogTitle>
+            </DialogHeader>
             <form className="flex flex-col space-y-4 justify-center items-center">
-              <Input placeholder="username" type="email" />
+              <Input placeholder="full name" type="email" />
+              <Input placeholder="email" type="email" />
               <Input placeholder="password" type="password" />
+              <p className="font-bold self-start">Date of Birth</p>
+              <p className="font-thin text-xs text-black/75 self-start">
+                This information will not be shared with others. Make sure to
+                input your real age.
+              </p>
+              <Input placeholder="date" type="date" />
+              <p className="font-bold text-sm self-start">Gender</p>
+              <Input placeholder="Gender" type="gender" />
+              <p className="font-thin text-xs text-center text-black/75">
+                By signing up, you agree to our Terms , Privacy Policy and
+                Cookies Policy .
+              </p>
               <Button
-                className="text-sm uppercase bg-rose-400 hover:bg-blue-950 h-7 w-max"
+                className="text-sm uppercase  bg-blue-950 hover:bg-rose h-7 w-max"
                 type="submit"
                 asChild
               >
-                <Link to="/">Sign In</Link>
+                <Link to="/">Sign Up</Link>
               </Button>
               <hr className="w-1/2 h-px bg-gray-300 border-0" />
               <div className="flex flex-row text-sm gap-1 justify-center">
-                <p className="font-light ">Don't have an account?</p>
+                <p className="font-light ">Already have an account?</p>
                 <Button
-                  className=" text-blue-900 hover:text-white hover:no-underline hover:bg-rose  h-5 py-0 px-2"
+                  className=" text-rose hover:text-white hover:no-underline hover:bg-blue-950  h-5 py-0 px-2"
                   variant="link"
-                  onClick={() => setShowModal(true)}
                   asChild
                 >
-                  <Link to="/landing-page/register">Sign Up</Link>
-                  <Outlet />
+                  <Link to="/landing-page/login">Sign In</Link>
                 </Button>
               </div>
             </form>
-          </CardContent>
-        </Card>
-      </Modal>
+          </DialogContent>
+        </Dialog>
+        <hr className="w-64 h-px my-2 bg-gray-300 border-0" />
+        <div className="flex flex-row text-sm gap-1">
+          <p className="font-light ">Already have an account?</p>
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button
+                className=" text-blue-900 hover:text-white hover:no-underline hover:bg-rose  h-5 py-0 px-2"
+                variant="link"
+              >
+                Sign In
+              </Button>
+            </DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle>Sign In</DialogTitle>
+              </DialogHeader>
+              <form className="flex flex-col space-y-4 justify-center items-center">
+                <Input placeholder="username" type="email" />
+                <Input placeholder="password" type="password" />
+                <Button
+                  className="text-sm uppercase bg-rose hover:bg-blue-950 h-7 w-max"
+                  type="submit"
+                  asChild
+                >
+                  <Link to="/">Sign In</Link>
+                </Button>
+                <hr className="w-1/2 h-px bg-gray-300 border-0" />
+                <div className="flex flex-row text-sm gap-1 justify-center">
+                  <p className="font-light ">Don't have an account?</p>
+                  <Button
+                    className=" text-blue-900 hover:text-white hover:no-underline hover:bg-rose  h-5 py-0 px-2"
+                    variant="link"
+                    asChild
+                  >
+                    <Link to="/landing-page/register">Sign Up</Link>
+                  </Button>
+                </div>
+              </form>
+            </DialogContent>
+          </Dialog>
+        </div>
+      </div>
     </div>
   );
 };
