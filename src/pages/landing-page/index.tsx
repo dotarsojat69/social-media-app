@@ -8,8 +8,32 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { FormEvent, useState } from "react";
+import { userLogin } from "@/utils/api-list/auth/api";
+import { toast } from "sonner";
 
 const Index = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  async function onSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    const body = {
+      email,
+      password,
+    };
+
+    try {
+      const result = await userLogin(body);
+
+      console.log(result)
+    } catch (error) {
+      toast((error as Error).message.toString());
+    }
+  }
+
+
   return (
     <div className="container flex flex-row justify-between items-center p-30 w-full h-screen">
       <div className="flex flex-col gap-3">
@@ -49,9 +73,8 @@ const Index = () => {
               <Button
                 className="text-sm uppercase  bg-blue-950 hover:bg-rose h-7 w-max"
                 type="submit"
-                asChild
               >
-                <Link to="/home">Sign Up</Link>
+                Sign Up
               </Button>
               <hr className="w-1/2 h-px bg-gray-300 border-0" />
               <div className="flex flex-row text-sm gap-1 justify-center">
@@ -83,15 +106,29 @@ const Index = () => {
               <DialogHeader>
                 <DialogTitle>Sign In</DialogTitle>
               </DialogHeader>
-              <form className="flex flex-col space-y-4 justify-center items-center">
-                <Input placeholder="username" type="email" />
-                <Input placeholder="password" type="password" />
+              <form
+                className="flex flex-col space-y-4 justify-center items-center"
+                onSubmit={onSubmit}
+              >
+                <Input
+                  placeholder="johndoe@gmail.com"
+                  type="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                <Input
+                  placeholder="password"
+                  type="password"
+                  required
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
                 <Button
                   className="text-sm uppercase bg-rose hover:bg-blue-950 h-7 w-max"
                   type="submit"
-                  asChild
                 >
-                  <Link to="/">Sign In</Link>
+                  Sign In
                 </Button>
                 <hr className="w-1/2 h-px bg-gray-300 border-0" />
                 <div className="flex flex-row text-sm gap-1 justify-center">
