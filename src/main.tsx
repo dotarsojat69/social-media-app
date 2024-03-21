@@ -1,15 +1,15 @@
 
 import ReactDOM from 'react-dom/client'
 
-import Home from './pages/Home'
-import "./styles/globals.css";
-
+import "@/styles/globals.css"
+// import "@/styles/custom.css";
+import App from './routes';
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <>
     
-    
-    <Home />
+
+    <App />
     
   </>,
 )
