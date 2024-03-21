@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW X7 -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="6mm" height="6mm" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 600 600"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .fil0 {fill:black}
+   ]]>
+  </style>
+ </defs>
+ <g id="Layer_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <g id="chat.svg">
+   <path class="fil0" d="M223 300c0,14 -11,26 -25,26 -14,0 -26,-12 -26,-26 0,-14 12,-26 26,-26 14,0 25,12 25,26z"/>
+   <path class="fil0" d="M326 300c0,14 -12,26 -26,26 -14,0 -26,-12 -26,-26 0,-14 12,-26 26,-26 14,0 26,12 26,26z"/>
+   <path class="fil0" d="M428 300c0,14 -12,26 -26,26 -14,0 -25,-12 -25,-26 0,-14 11,-26 25,-26 14,0 26,12 26,26z"/>
+   <path class="fil0" d="M575 300c0,-152 -123,-275 -275,-275 -152,0 -275,123 -275,275 0,44 10,86 29,122 2,6 3,12 2,16l-15 57c-11,39 25,75 64,64l57 -15c4,-1 10,0 16,2 36,19 78,29 122,29 152,0 275,-123 275,-275zm-275 -237c131,0 237,106 237,237 0,131 -106,237 -237,237 -38,0 -74,-9 -105,-25 -13,-6 -28,-9 -43,-5l-57 15c-11,3 -20,-6 -17,-17l15 -57c4,-15 1,-30 -5,-43 -16,-31 -25,-67 -25,-105 0,-131 106,-237 237,-237z"/>
+  </g>
+ </g>
+</svg>
