@@ -11,6 +11,7 @@ axiosWithConfig.interceptors.request.use((axiosConfig) => {
   axiosConfig.baseURL =
     "https://virtserver.swaggerhub.com/MuhammadFadilah/Sosial_Media/1.0.0";
   if (bearerToken) {
+    console.log("axiosWithConfig terpanggil")
     axiosConfig.headers.Authorization = `Bearer ${bearerToken}`;
   }
 

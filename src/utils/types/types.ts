@@ -1,4 +1,5 @@
-export type IResponse<TPayload = any> = {
+export type IResponse<TData = any> = {
+  code: number;
   message: string;
-  payload: TPayload;
+  Data: TData;
 };
