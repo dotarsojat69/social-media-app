@@ -2,7 +2,7 @@
 import ReactDOM from "react-dom/client";
 
 import App from "@/routes";
-import "@/global.css";
+import "@/styles/globals.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <>
