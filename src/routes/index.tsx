@@ -6,6 +6,7 @@ import DetailPost from "@/pages/DetailPost";
 import Login from "@/pages/landing-page/login";
 import Register from "@/pages/landing-page/register";
 import Index from "@/pages/landing-page";
+import CreatePost from "@/pages/CreatePost";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
         <Route element={<Layout />}>
 
         <Route index element={<Home />}/>
+        <Route path="/create-post/" element={<CreatePost />} />
         <Route path="/detail-post/" element={<DetailPost />} />
 
         </Route>

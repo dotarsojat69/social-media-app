@@ -23,7 +23,7 @@ const Index = () => {
           className="text-sm uppercase bg-blue-950 hover:bg-rose h-7 w-full"
           asChild
         >
-          <Link to="/">Create account</Link>
+          <Link to="/landing-page/register">Create account</Link>
         </Button>
         <hr className="w-64 h-px my-2 bg-gray-300 border-0" />
         <div className="flex flex-row text-sm gap-1">
@@ -47,7 +47,7 @@ const Index = () => {
               <Input placeholder="username" type="email" />
               <Input placeholder="password" type="password" />
               <Button
-                className="text-sm uppercase bg-rose hover:bg-blue-950 h-7 w-max"
+                className="text-sm uppercase bg-rose-400 hover:bg-blue-950 h-7 w-max"
                 type="submit"
                 asChild
               >

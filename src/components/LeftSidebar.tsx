@@ -1,7 +1,15 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Button } from './ui/button'
 
+
 const LeftSidebar = () => {
+
+  const navigate = useNavigate();
+ 
+  const handleLogout = () => {
+    navigate("/landing-page/login");
+  };
+
   return (
     <nav className='leftsidebar'>
       <div className="flex flex-col gap-11">
@@ -34,12 +42,12 @@ const LeftSidebar = () => {
         </ul>
       </div>
 
-      <Button variant="ghost" className="shad-button_ghost">
-                    <img src="/assets/icons/logout.svg" alt="logout" />
+      <Button variant="ghost" className="shad-button_ghost" onClick={handleLogout}>
+               <img src="/assets/icons/logout.svg" alt="logout" />
                     <p className='small-medium lg:base-medium text-black'>
                       Logout
                     </p>
-                </Button>
+      </Button>
 
     </nav>
   )
