@@ -1,55 +1,49 @@
 import React from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
+import { Input } from "@/components/ui/input";
 
 function Profile() {
   return (
-    <div className="bg-slate-300 m-10 flex p-6 justify-between w-[900px]">
-      <div>
-        <Avatar className="w-[100px] h-[100px] ms-20">
+    <div className="bg-[#D9D9D9] m-10 p-10 rounded-lg flex justify-between w-full">
+      <div className="flex flex-col items-center">
+        <Avatar className="size-44 mb-8">
           <AvatarImage src="https://github.com/shadcn.png" />
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
-        <div className="pt-10 gap-5 ms-10">
-          <Button>Edit Profile</Button>
-
-          {/* save change */}
+        <div className="grid grid-cols-2 gap-5 justify-center pb-4">
+          <button className="bg-white py-2 px-4 rounded-3xl hover:bg-[#fb6f92]">Edit Profile</button>
           <AlertDialog>
-            <AlertDialogTrigger>
-              <Button className="ms-5">Save change</Button>
-            </AlertDialogTrigger>
+            <AlertDialogTrigger className="bg-white py-2 px-4 rounded-3xl hover:bg-[#fb6f92]">Save</AlertDialogTrigger>
             <AlertDialogContent>
               <AlertDialogHeader>
-                <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-                <AlertDialogDescription>This action cannot be undone. This will permanently delete your account and remove your data from our servers.</AlertDialogDescription>
+                <AlertDialogTitle>Save Change</AlertDialogTitle>
+                <AlertDialogDescription>
+                  Are you sure to save this change? <br /> When you confirm this action, your data will be change
+                </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter>
                 <AlertDialogCancel>Cancel</AlertDialogCancel>
-                <AlertDialogAction>Continue</AlertDialogAction>
+                <AlertDialogAction>Save</AlertDialogAction>
               </AlertDialogFooter>
             </AlertDialogContent>
           </AlertDialog>
         </div>
-        <div className="mt-5 ms-10">
-          <AlertDialog>
-            <AlertDialogTrigger>
-              <Button>Delete Profile</Button>
-            </AlertDialogTrigger>
-            <AlertDialogContent>
-              <AlertDialogHeader>
-                <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-                <AlertDialogDescription>This action cannot be undone. This will permanently delete your account and remove your data from our servers.</AlertDialogDescription>
-              </AlertDialogHeader>
-              <AlertDialogFooter>
-                <AlertDialogCancel>Cancel</AlertDialogCancel>
-                <AlertDialogAction> countinue</AlertDialogAction>
-              </AlertDialogFooter>
-            </AlertDialogContent>
-          </AlertDialog>
-        </div>
+        <AlertDialog>
+          <AlertDialogTrigger className="bg-white py-2 px-4 rounded-3xl hover:bg-[#fb6f92]">Delete Profile</AlertDialogTrigger>
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle>Delete Profile</AlertDialogTitle>
+              <AlertDialogDescription>
+                Are you sure to delete your profile data? <br /> When you confirm this action, your data will be disapear from your profile
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogCancel>Cancel</AlertDialogCancel>
+              <AlertDialogAction>Delete</AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
       </div>
       <div>
         <p>Full Name</p>
