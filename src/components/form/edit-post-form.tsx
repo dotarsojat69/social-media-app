@@ -30,8 +30,8 @@ const EditPostForm = (props: Props) => {
   const form = useForm<PostPayloadSchema>({
     resolver: zodResolver(postPayloadSchema),
     defaultValues: {
-      caption: detailPost?.caption ?? "",
-      image: detailPost?.image ?? "",
+      caption: "",
+      image: "",
     },
     values: {
       caption: detailPost?.caption ?? "",
@@ -69,7 +69,7 @@ const EditPostForm = (props: Props) => {
       formData.append("caption", data.caption);
       formData.append("image", data.image[0]);
 
-      const result = await editPosts(post_id, formData as any);
+      const result = await editPosts(post_id, formData as never);
       toast({
         description: result.message,
       });
