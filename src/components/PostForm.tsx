@@ -14,8 +14,8 @@ import { Textarea } from "./ui/textarea"
 import FileUploader from "./FileUploader"
  
 const formSchema = z.object({
-  username: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
+  name: z.string().min(2, {
+    message: "Caption",
   }),
 })
 
@@ -24,7 +24,7 @@ const PostForm = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: "",
+      name: "",
     },
   })
  

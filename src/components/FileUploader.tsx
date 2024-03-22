@@ -5,7 +5,7 @@ import { Button } from './ui/button';
 const FileUploader = () => {
   const [fileUrl] = useState('')
 
-  const onDrop = useCallback(acceptedFiles => {
+  const onDrop = useCallback(() => {
     // Do something with the files
   }, [])
 
