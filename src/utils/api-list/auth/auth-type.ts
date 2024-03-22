@@ -25,5 +25,10 @@ export const registerSchema = z
     path: ["repassword"],
   });
 
+// export const indexSchema = z.discriminatedUnion("mode", [
+//   loginSchema,
+//   registerSchema,
+// ]);
+
 export type LoginSchema = z.infer<typeof loginSchema>;
 export type RegisterSchema = z.infer<typeof registerSchema>;

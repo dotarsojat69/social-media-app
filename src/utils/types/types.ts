@@ -1,5 +1,16 @@
-export type IResponse<TData = any> = {
+export type ILogin<LoginData = any> = {
   code: number;
   message: string;
-  Data: TData;
+  data: LoginData;
+};
+
+export type LoginData = {
+  nama: string;
+  email: string;
+  token: string;
+}
+
+export type IRegister = {
+  code: number;
+  message: string;
 };
