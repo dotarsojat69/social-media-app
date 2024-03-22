@@ -8,6 +8,7 @@ import CreatePost from "@/pages/CreatePost";
 import Layout from "@/components/Layout";
 import DetailPost from '@/pages/DetailPost';
 import Profile from '@/pages/Profile';
+import EditPost from "@/pages/EditPost";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
       {
         path: "/detail-post",
         element: <DetailPost />,
+      },
+      {
+        path: "/update-post",
+        element: <EditPost />,
       },
     ],
   },
