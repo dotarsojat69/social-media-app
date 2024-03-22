@@ -20,7 +20,7 @@ import {
     name: FieldPath<T>;
     label?: string;
     placeholder?: string;
-    options?: any[];
+    options?: [];
     description?: string;
     control: Control<T>;
   }
