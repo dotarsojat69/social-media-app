@@ -2,7 +2,6 @@ import PostCard from "@/components/PostCard"
 
 const Home = () => {
   return (
-     
     <div className="flex flex-1">
       <div className="home-container">
         <div className="home-posts">
@@ -13,7 +12,6 @@ const Home = () => {
         </div>
       </div>
     </div>
-   
   )
 }
 
