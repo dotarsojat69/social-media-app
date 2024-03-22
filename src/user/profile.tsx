@@ -4,7 +4,6 @@ import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, 
 import { Input } from "@/components/ui/input";
 
 function Profile() {
-
   return (
     <div className="bg-[#D9D9D9] m-10 p-10 rounded-lg flex justify-between w-full">
       <div className="flex flex-col items-center">
