@@ -1,4 +1,9 @@
+import { zodResolver } from "@hookform/resolvers/zod";
 import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
+
+import { toast } from "sonner";
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -8,31 +13,36 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { FormEvent, useState } from "react";
+import { Form } from "@/components/ui/form";
+import { CustomFormDatePicker, CustomFormField, CustomFormGenderPicker } from "@/components/custom-formfield";
+
 import { userLogin } from "@/utils/api-list/auth/api";
-import { toast } from "sonner";
+import { loginSchema, LoginSchema } from "@/utils/api-list/auth/auth-type";
 
 const Index = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const form = useForm<LoginSchema>({
+    resolver: zodResolver(loginSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      password: "",
+      repassword: "",
+      // date_of_birth: Date,
+      gender: "",
+    },
+  });
 
-  async function onSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-
-    const body = {
-      email,
-      password,
-    };
-
+  async function onSubmit(data: LoginSchema) {
     try {
-      const result = await userLogin(body);
+      const result = await userLogin(data);
 
-      console.log(result)
+      // localStorage.setItem("Token", result.Data.token);
+
+      toast(result.message);
     } catch (error) {
       toast((error as Error).message.toString());
     }
   }
-
 
   return (
     <div className="container flex flex-row justify-between items-center p-30 w-full h-screen">
@@ -54,40 +64,115 @@ const Index = () => {
             <DialogHeader>
               <DialogTitle>Sign In</DialogTitle>
             </DialogHeader>
-            <form className="flex flex-col space-y-4 justify-center items-center">
-              <Input placeholder="full name" type="email" />
-              <Input placeholder="email" type="email" />
-              <Input placeholder="password" type="password" />
-              <p className="font-bold self-start">Date of Birth</p>
-              <p className="font-thin text-xs text-black/75 self-start">
-                This information will not be shared with others. Make sure to
-                input your real age.
-              </p>
-              <Input placeholder="date" type="date" />
-              <p className="font-bold text-sm self-start">Gender</p>
-              <Input placeholder="Gender" type="gender" />
-              <p className="font-thin text-xs text-center text-black/75">
-                By signing up, you agree to our Terms , Privacy Policy and
-                Cookies Policy .
-              </p>
-              <Button
-                className="text-sm uppercase  bg-blue-950 hover:bg-rose h-7 w-max"
-                type="submit"
+            <Form {...form}>
+              <form
+                className="flex flex-col space-y-4 justify-center items-center"
+                onSubmit={form.handleSubmit(onSubmit)}
               >
-                Sign Up
-              </Button>
-              <hr className="w-1/2 h-px bg-gray-300 border-0" />
-              <div className="flex flex-row text-sm gap-1 justify-center">
-                <p className="font-light ">Already have an account?</p>
-                <Button
-                  className=" text-rose hover:text-white hover:no-underline hover:bg-blue-950  h-5 py-0 px-2"
-                  variant="link"
-                  asChild
+                <CustomFormField
+                  control={form.control}
+                  name="name"
+                  label="Full Name"
                 >
-                  <Link to="/home">Sign In</Link>
+                  {(field) => (
+                    <Input
+                      {...field}
+                      placeholder="John Doe"
+                      disabled={form.formState.isSubmitting}
+                      aria-disabled={form.formState.isSubmitting}
+                      value={field.value as string}
+                    />
+                  )}
+                </CustomFormField>
+                <CustomFormField
+                  control={form.control}
+                  name="email"
+                  label="Email"
+                >
+                  {(field) => (
+                    <Input
+                      {...field}
+                      placeholder="john_doe@mail.com"
+                      type="email"
+                      disabled={form.formState.isSubmitting}
+                      aria-disabled={form.formState.isSubmitting}
+                      value={field.value as string}
+                    />
+                  )}
+                </CustomFormField>
+                <CustomFormField
+                  control={form.control}
+                  name="password"
+                  label="Password"
+                >
+                  {(field) => (
+                    <Input
+                      {...field}
+                      placeholder="Password"
+                      type="password"
+                      disabled={form.formState.isSubmitting}
+                      aria-disabled={form.formState.isSubmitting}
+                      value={field.value as string}
+                    />
+                  )}
+                </CustomFormField>
+                <CustomFormField
+                  control={form.control}
+                  name="repassword"
+                  label="Confirm Password"
+                >
+                  {(field) => (
+                    <Input
+                      {...field}
+                      placeholder="Confirm Password"
+                      type="password"
+                      disabled={form.formState.isSubmitting}
+                      aria-disabled={form.formState.isSubmitting}
+                      value={field.value as string}
+                    />
+                  )}
+                </CustomFormField>
+                <div className="flex flex-col text-sm gap-1 justify-center">
+                  <p className="font-bold ">Date of Birth</p>
+                  <p className="font-thin text-xs text-black/75">
+                    This information will not be shared with others. Make sure
+                    to input your real age.
+                  </p>
+                </div>
+                <CustomFormDatePicker
+                  control={form.control}
+                  name="date_of_birth"
+                  label=""
+                  placeholder="Pick Your Date"
+                />
+                <CustomFormGenderPicker
+                  control={form.control}
+                  name="gender"
+                  label="Gender"
+                />
+                <p className="font-thin text-xs text-center text-black/75">
+                  By signing up, you agree to our Terms , Privacy Policy and
+                  Cookies Policy .
+                </p>
+                <Button
+                  className="text-sm uppercase  bg-blue-950 hover:bg-rose h-7 w-max"
+                  type="submit"
+                >
+                  Sign Up
                 </Button>
-              </div>
-            </form>
+                <hr className="w-1/2 h-px bg-gray-300 border-0" />
+                <div className="flex flex-row text-sm gap-1 justify-center">
+                  <p className="font-light ">Already have an account?</p>
+                  <Button
+                    className=" text-rose hover:text-white hover:no-underline hover:bg-blue-950  h-5 py-0 px-2"
+                    variant="link"
+                    asChild
+                  >
+                    <Link to="/login">Sign In</Link>
+                  </Button>
+                </div>
+              </form>
+            </Form>
           </DialogContent>
         </Dialog>
         <hr className="w-64 h-px my-2 bg-gray-300 border-0" />
@@ -106,42 +191,62 @@ const Index = () => {
               <DialogHeader>
                 <DialogTitle>Sign In</DialogTitle>
               </DialogHeader>
-              <form
-                className="flex flex-col space-y-4 justify-center items-center"
-                onSubmit={onSubmit}
-              >
-                <Input
-                  placeholder="johndoe@gmail.com"
-                  type="email"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-                <Input
-                  placeholder="password"
-                  type="password"
-                  required
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-                <Button
-                  className="text-sm uppercase bg-rose hover:bg-blue-950 h-7 w-max"
-                  type="submit"
+              <Form {...form}>
+                <form
+                  className="flex flex-col space-y-4 justify-center items-center"
+                  onSubmit={form.handleSubmit(onSubmit)}
                 >
-                  Sign In
-                </Button>
-                <hr className="w-1/2 h-px bg-gray-300 border-0" />
-                <div className="flex flex-row text-sm gap-1 justify-center">
-                  <p className="font-light ">Don't have an account?</p>
-                  <Button
-                    className=" text-blue-900 hover:text-white hover:no-underline hover:bg-rose  h-5 py-0 px-2"
-                    variant="link"
-                    asChild
+                  <CustomFormField
+                    control={form.control}
+                    name="email"
+                    label="Email"
                   >
-                    <Link to="/landing-page/register">Sign Up</Link>
+                    {(field) => (
+                      <Input
+                        {...field}
+                        placeholder="john_doe@mail.com"
+                        type="email"
+                        disabled={form.formState.isSubmitting}
+                        aria-disabled={form.formState.isSubmitting}
+                        value={field.value as string}
+                      />
+                    )}
+                  </CustomFormField>
+                  <CustomFormField
+                    control={form.control}
+                    name="password"
+                    label="Password"
+                  >
+                    {(field) => (
+                      <Input
+                        {...field}
+                        placeholder="Password"
+                        type="password"
+                        disabled={form.formState.isSubmitting}
+                        aria-disabled={form.formState.isSubmitting}
+                        value={field.value as string}
+                      />
+                    )}
+                  </CustomFormField>
+                  <Button
+                    className="text-sm uppercase bg-rose hover:bg-blue-950 h-7 w-max"
+                    type="submit"
+                  >
+                    Sign In
                   </Button>
-                </div>
-              </form>
+                  <hr className="w-1/2 h-px bg-gray-300 border-0" />
+                  <div className="flex flex-row text-sm gap-1 justify-center">
+                    <p className="font-light ">Don't have an account?</p>
+                    <Button
+                      className=" text-blue-900 hover:text-white hover:no-underline hover:bg-rose  h-5 py-0 px-2"
+                      variant="link"
+                      asChild
+                    >
+                      <Link to="/register">Sign Up</Link>
+                    </Button>
+                  </div>
+                </form>
+              </Form>
             </DialogContent>
           </Dialog>
         </div>
