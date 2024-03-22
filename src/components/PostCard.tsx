@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -13,7 +13,7 @@ import Alert from "./alert";
 // import { User, getUser } from "@/utils/apis/users";
 // import { useEffect, useState } from "react";
 import CustomDialog from "./dialog";
-import EditPost from "@/pages/EditPost";
+// import EditPost from "@/pages/EditPost";
 
 // interface PostCardProps {
 //   data: DetailPost;
@@ -22,7 +22,7 @@ import EditPost from "@/pages/EditPost";
 
 const PostCard = () => {
   // const { user, token } = useToken();
-  const navigate = useNavigate();
+//   const navigate = useNavigate();
 //   const { toast } = useToast();
 //   const { userData, data } = props;
 
