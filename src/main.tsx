@@ -1,11 +1,14 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
 
-import Home from "./pages/Home";
-import "./global.css";
+import "@/styles/globals.css";
+// import "@/styles/custom.css";
+import App from "./routes";
+
+import { Toaster } from "sonner";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <Home />
-  </React.StrictMode>
+  <>
+    <Toaster />
+    <App />
+  </>
 );
