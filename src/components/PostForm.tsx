@@ -40,7 +40,7 @@ const PostForm = () => {
       <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-9 w-full max-w-5xl">
         <FormField
           control={form.control}
-          name="caption"
+          name="username"
           render={({ field }) => (
             <FormItem>
               <FormLabel className="shad-form_label">Caption</FormLabel>
@@ -53,7 +53,7 @@ const PostForm = () => {
         />
         <FormField
           control={form.control}
-          name="file"
+          name="username"
           render={({ }) => (
             <FormItem>
               <FormLabel className="shad-form_label">Add Photos</FormLabel>
