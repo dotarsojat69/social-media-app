@@ -14,7 +14,7 @@ import { Textarea } from "./ui/textarea"
 import FileUploader from "./FileUploader"
  
 const formSchema = z.object({
-  name: z.string().min(2, {
+  username: z.string().min(2, {
     message: "Caption",
   }),
 })
@@ -24,7 +24,7 @@ const PostForm = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: "",
+      username: "",
     },
   })
  
@@ -54,7 +54,7 @@ const PostForm = () => {
         <FormField
           control={form.control}
           name="file"
-          render={({ field }) => (
+          render={({ }) => (
             <FormItem>
               <FormLabel className="shad-form_label">Add Photos</FormLabel>
               <FormControl>
