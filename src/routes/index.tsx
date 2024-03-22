@@ -7,6 +7,7 @@ import Login from '@/pages/landing-page/login';
 import CreatePost from '@/pages/CreatePost';
 import Layout from '@/components/Layout';
 import DetailPost from '@/pages/DetailPost';
+import Profile from '@/pages/Profile';
 
 
 const router = createBrowserRouter([
@@ -29,10 +30,10 @@ const router = createBrowserRouter([
         path: "/landing-page/login",
         element: <Login />,
       },
-      // {
-      //   path: "/profile",
-      //   element: <Profile />,
-      // },
+      {
+        path: "/profile",
+        element: <Profile />,
+      },
       {
         path: "/create-post",
         element: <CreatePost />,

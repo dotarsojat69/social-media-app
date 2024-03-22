@@ -1,18 +1,79 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { DropdownMenu,
         DropdownMenuContent, 
         DropdownMenuItem,
         DropdownMenuSeparator, 
         DropdownMenuTrigger 
         } from "./ui/dropdown-menu"
+import { DetailPost, deletePosts } from "@/utils/apis/posts"
+// import { useToken } from "@/utils/contexts/token";
+import { useToast } from "./ui/use-toast";
+import Alert from "./alert";
+import { User, getUser } from "@/utils/apis/users";
+import { useEffect, useState } from "react";
+import CustomDialog from "./dialog";
+import EditPost from "@/pages/EditPost";
 
-const PostCard = () => {
+    interface PostCardProps  {
+        data: DetailPost;
+        userData: User;
+    }
+
+const PostCard = (props: PostCardProps) => {
+    
+    // const { user, token } = useToken();
+    const navigate = useNavigate();
+    const { toast } = useToast();
+    const { userData, data } = props;
+
+    const [userPicture, setUserPicture] = useState("");
+
+    useEffect(() => {
+
+        const handleUser = async () => {
+            try {
+                const result = await getUser(userData.user_id);
+                setUserPicture(result.data.picture)
+            
+            } catch (error: any) {
+    
+                toast({
+                    title: "Oops! Something went wrong.",
+                    description: error.toString(),
+                    variant: "destructive",
+                });
+            }
+        }
+        handleUser
+    },[])
+
+
+    async function handleDeletePost(id:string) {
+        try {
+            const result = await deletePosts(id);
+            toast ({ description: result.message });
+
+            console.log("fungsi terpanggil")
+
+            navigate("/home");
+        } catch (error: any) {
+            toast({
+                title: "Oops! Something went wrong.",
+                description: error.toString(),
+                variant: "destructive",
+            });
+    }
+}
+
   return (
     <div className="post-card">
         <div className="flex-between">
             <div className="flex items-center gap-3">
                 <Link to="/profile/">
-                <img src="/assets/images/profile.svg" alt="creator" className="w-14 lg:h-12 rounded-full" />
+                
+                {userPicture && (
+                    <img src={userPicture} alt="photo profile" className="w-14 lg:h-12 rounded-full" />
+                )}
                 </Link>
                 <div className="flex flex-col">
                     <p className="base-medium lg:body-bold text-black">
@@ -38,10 +99,27 @@ const PostCard = () => {
                 height={20} />
             </DropdownMenuTrigger>
             <DropdownMenuContent>
-            <DropdownMenuItem><Link to="/edit-post">Edit Post</Link>
+            <DropdownMenuItem asChild>
+            <CustomDialog
+                      description={
+                        <EditPost post_id={data.id.toString()} />
+                      }
+                    >
+                      <p className="dark:hover:bg-white/25 rounded px-10">
+                        Edit Post
+                      </p>
+                    </CustomDialog>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Delete Post</DropdownMenuItem>
+            <DropdownMenuItem asChild>
+            <Alert
+                    title="Are you sure delete this post?
+                    When you confirm this action, your post will be disapear from your feed"
+                    onAction={() => handleDeletePost(data.id.toString())}
+                  > 
+                    Delete Post
+            </Alert>
+            </DropdownMenuItem>
             </DropdownMenuContent>
     </DropdownMenu>
         </div>
@@ -66,4 +144,4 @@ const PostCard = () => {
   )
 }
 
-export default PostCard
+export default PostCard;
