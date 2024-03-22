@@ -1,6 +1,6 @@
 import PostForm from "@/components/PostForm"
 
-const CreatePost = () => {
+const EditPost = () => {
   return (
     <div className="flex flex-1">
       <div className="common-container">
@@ -15,4 +15,4 @@ const CreatePost = () => {
   )
 }
 
-export default CreatePost
+export default EditPost
