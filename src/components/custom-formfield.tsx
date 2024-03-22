@@ -57,8 +57,8 @@ export function CustomFormField<T extends FieldValues>(
       name={name}
       render={({ field }) => (
         <FormItem className="w-full">
-          <FormLabel>{label}</FormLabel>
-          <FormControl>{children(field)}</FormControl>
+          <FormLabel className="font-bold text-lg">{label}</FormLabel>
+          <FormControl className="text-m">{children(field)}</FormControl>
           {description && <FormDescription>{description}</FormDescription>}
           <FormMessage />
         </FormItem>
@@ -78,7 +78,7 @@ export function CustomFormDatePicker<T extends FieldValues>(
       name={name}
       render={({ field }) => (
         <FormItem className="flex flex-col w-full">
-          <FormLabel>{label}</FormLabel>
+          <FormLabel className="font-bold text-lg">{label}</FormLabel>
           <Popover>
             <PopoverTrigger asChild>
               <Button
@@ -124,7 +124,7 @@ export function CustomFormGenderPicker<T extends FieldValues>(
       name={name}
       render={({ field }) => (
         <FormItem className="flex flex-col w-full gap-1">
-          <FormLabel>{label}</FormLabel>
+          <FormLabel className="font-bold text-lg">{label}</FormLabel>
           <FormControl>
             <RadioGroup
               onValueChange={field.onChange}

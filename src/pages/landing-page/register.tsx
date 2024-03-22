@@ -30,7 +30,7 @@ const Register = () => {
       email: "",
       password: "",
       repassword: "",
-      // date_of_birth: Date,
+      // date_of_birth: "",
       gender: "",
     },
   });
