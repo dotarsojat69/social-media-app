@@ -3,13 +3,13 @@ import { useDropzone } from 'react-dropzone';
 import { Button } from './ui/button';
 
 const FileUploader = () => {
-  const [fileUrl, setFileUrl] = useState('')
+  const [fileUrl] = useState('')
 
   const onDrop = useCallback(acceptedFiles => {
     // Do something with the files
   }, [])
 
-  const {getRootProps, getInputProps, isDragActive} = useDropzone
+  const {getRootProps, getInputProps} = useDropzone
   ({onDrop,
     accept: {
       'image/*': ['.png', '.jpeg', '.jpg', '.svg']
